@@ -1,7 +1,32 @@
 import React from 'react';
 import LogInPage from './src/page/LogInPage';
-import { EntityImage } from './src/component/EntityImage';
+import HeaderComponent from './src/page/mainPage/HeaderComponent';
+import { IEntityImageProps } from './src/component/EntityImage';
 import { ActivityIndicator, Text, View, Button  } from 'react-native';
+
+
+const tempStories: IEntityImageProps[] = [
+  {
+    source: '',
+    accountName: 'Benny_Ben',
+  },
+  {
+    source: '',
+    accountName: 'Benny_Ben',
+  },
+  {
+    source: '',
+    accountName: 'Benny_Ben',
+  },
+  {
+    source: '',
+    accountName: 'Benny_Ben',
+  },
+  {
+    source: '',
+    accountName: 'Benny_Ben',
+  },
+]
 
 export default class App extends React.Component {
 
@@ -20,10 +45,10 @@ export default class App extends React.Component {
         </View>
       )
     }
-//      <LogInPage />
+
     return(
       <View style={{flex: 1, paddingTop:20}}>
-        <EntityImage />
+        <HeaderComponent storyProps={tempStories} />
       </View>
     );
   }

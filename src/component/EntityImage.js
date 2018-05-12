@@ -1,12 +1,16 @@
+/* @flow */
 import React from 'react';
-import { TextInput,Text, View, Button, ImageBackground, StyleSheet } from 'react-native';
-
+import { Text, ImageBackground, StyleSheet, View } from 'react-native';
 
 //TODO: image source pass in through props
-export const EntityImage = (props, context) => {
-    return (<View style={styles.CircleConatiner}>
-        <ImageBackground source={require('.../../../resource/benny.jpg')} imageStyle={{ borderRadius: 30 }} style={styles.Image}/>
-   </View> );
+export default class EntityImage extends React.Component<IEntityImageProps, {}>
+{
+    render() {
+            return (<View style={styles.CircleConatiner}>
+                <ImageBackground source={require('../../resource/benny.jpg')} imageStyle={{ borderRadius: 30 }} style={styles.Image}/>
+                <Text>{this.props.accountName}</Text>
+        </View> );
+    }
 }
 
 const styles = StyleSheet.create({
@@ -20,3 +24,9 @@ const styles = StyleSheet.create({
         display: 'flex',
     }
 })
+
+//@flow
+export interface IEntityImageProps{
+    source: string,
+    accountName: string,
+}
