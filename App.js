@@ -1,32 +1,6 @@
 import React from 'react';
-import LogInPage from './src/page/LogInPage';
-import HeaderComponent from './src/page/mainPage/HeaderComponent';
-import { IEntityImageProps } from './src/component/EntityImage';
+import MainPage from './src/page/MainPage';
 import { ActivityIndicator, Text, View, Button  } from 'react-native';
-
-
-const tempStories: IEntityImageProps[] = [
-  {
-    source: '',
-    accountName: 'Benny_Ben',
-  },
-  {
-    source: '',
-    accountName: 'Benny_Ben',
-  },
-  {
-    source: '',
-    accountName: 'Benny_Ben',
-  },
-  {
-    source: '',
-    accountName: 'Benny_Ben',
-  },
-  {
-    source: '',
-    accountName: 'Benny_Ben',
-  },
-]
 
 export default class App extends React.Component {
 
@@ -37,18 +11,18 @@ export default class App extends React.Component {
 
   render(){
 
-    if(this.state.isLoading){
-      return(
-        <View style={{flex: 1, padding: 20}}>
-        <Button onPress={() => { this.setState({isLoading: !this.state.isLoading})}} title={"flip the state"} />
-          <ActivityIndicator/>
-        </View>
-      )
-    }
+    // if(this.state.isLoading){
+    //   return(
+    //     <View style={{flex: 1, padding: 20}}>
+    //     <Button onPress={() => { this.setState({isLoading: !this.state.isLoading})}} title={"flip the state"} />
+    //       <ActivityIndicator/>
+    //     </View>
+    //   )
+    // }
 
     return(
       <View style={{flex: 1, paddingTop:20}}>
-        <HeaderComponent storyProps={tempStories} />
+        <MainPage />
       </View>
     );
   }

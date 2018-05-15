@@ -1,4 +1,6 @@
 {
+  "name": "IG-Story-Viewer",
+  "displayName": "IG-Story-Viewer",
   "expo": {
     "sdkVersion": "27.0.0"
   }

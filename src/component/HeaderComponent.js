@@ -1,8 +1,8 @@
 /* @flow */
 import React from 'react';
-import EntityImage from '../../component/EntityImage';
-import { IEntityImageProps } from '../../component/EntityImage';
+import EntityImage from './EntityImage';
 import { View, ScrollView } from 'react-native';
+import { IUserStoryInfo } from '../page/MainPage';
 
 export default class HeaderComponent extends React.Component<IHeaderComponentProps, {}> {
 
@@ -10,10 +10,10 @@ export default class HeaderComponent extends React.Component<IHeaderComponentPro
         super();
     }
 
-    renderStoryCircles(storyProps: IEntityImageProps[]) {
+    renderStoryCircles(storyProps: IUserStoryInfo[]) {
         let stories = [];
-        storyProps.forEach((storyProp: IEntityImageProps) => {
-            stories.push(<EntityImage source={storyProp.source} accountName={storyProp.accountName} />)
+        storyProps.forEach((storyProp: IUserStoryInfo) => {
+            stories.push(<EntityImage key={storyProp.accountName} source={storyProp.source} accountName={storyProp.accountName} />)
         })
         
 
@@ -32,8 +32,11 @@ export default class HeaderComponent extends React.Component<IHeaderComponentPro
 const scrollView = {
     display: 'flex',
     flexDirection: 'row',
+    borderStyle: 'solid',
+    borderBottomWidth: 1,
+    borderBottomColor: '#e5e8ea'
 }
 
 export interface IHeaderComponentProps {
-    storyProps: IEntityImageProps[]
+    storyProps: IUserStoryInfo[]
 }
