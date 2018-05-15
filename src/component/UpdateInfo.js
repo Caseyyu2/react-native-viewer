@@ -2,12 +2,28 @@
 import React from 'react';
 import { Text, ImageBackground, StyleSheet, View, Button, ScrollView } from 'react-native';
 import { IUserStoryInfo } from '../page/MainPage';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Font } from 'expo';
 
 //TODO: linking react-native-vector icon
 //https://github.com/facebook/react-native/issues/18781
-export default class UpdateInfo extends React.Component<storyUpdateProps,{}> {
-    
+export default class UpdateInfo extends React.Component<IStoryUpdateProps,IStoryUpdateState> {
+
+    constructor() {
+        super();
+        this.state = {
+            fontLoaded: false
+        }
+    }
+
+    //TODO: Adding those as a util function for boot
+    async componentDidMount() {
+        await Font.loadAsync({
+          awesome:
+            require('react-native-vector-icons/Fonts/FontAwesome.ttf'),
+        });
+        this.setState({ fontLoaded: true });
+    }
+
     renderUpdateInfo(storyUpdateProps: IUserStoryInfo[]) {
         let updateInfo = [];
         //<Button title='down' onPress={() => {console.log('todo')}}/>
@@ -21,7 +37,16 @@ export default class UpdateInfo extends React.Component<storyUpdateProps,{}> {
                 </View>
                 <View style={styles.buttonContainerStyle}>
                     
-                    <Icon name="rocket" size={30} color="#900" />
+                {this.state.fontLoaded ? (
+                    <Text
+                        style={{
+                        fontFamily: 'awesome',
+                        fontSize: 40,
+                        color: '#52AEF4',
+                        }}>
+                        {'\uf0ab'}
+                    </Text>
+                    ) : null}
                 </View>
             </View>
             )
@@ -55,17 +80,19 @@ const styles = StyleSheet.create({
     },
     buttonContainerStyle:{
         display:'flex', 
-        backgroundColor: '#87CEEA',
         height: 40,
         width: 40,
     },
     buttonStyle: {
         display: 'flex',
         color: 'yellow',
-
     }
 })
 
-export interface storyUpdateProps {
+export interface IStoryUpdateProps {
     storyUpdateProps: IUserStoryInfo[];
 } 
+
+export interface IStoryUpdateState {
+    fontLoaded: boolean;
+}
